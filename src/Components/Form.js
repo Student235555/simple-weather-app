@@ -1,10 +1,10 @@
 import React from "react";
 import './Form.css';
 
-const Form = ({name, change}) => {
+const Form = ({name, change, submit}) => {
     
     return ( 
-        <form>
+        <form onSubmit={submit}>
             <input 
                 placeholder="Podaj nazwę miasta..." 
                 value={name} 

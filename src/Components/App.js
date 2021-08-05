@@ -3,15 +3,44 @@ import './App.css';
 import Form from "./Form";
 import Result from "./Result";
 
-//const APIkey = '1146d14d2af48b91a826d85e26a4117e';
+const APIkey = '1146d14d2af48b91a826d85e26a4117e';
 
 const App = () => {
 
-  const [cityName, setCityName] = useState('');
+  const [value, setValue] = useState('');
+  const [date, setDate] = useState('');
+  const [city, setCity] = useState('');
+  const [sunrise, setSunrise] = useState('');
+  const [sunset, setSunset] = useState('');
+  const [temp, setTemp] = useState('');
+  const [wind, setWind] = useState('');
+  const [pressure, setPressure] = useState('');
+  const [err, setErr] = useState('');
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const API = `http://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${APIkey}&units=metric`;
+
+    fetch(API)
+      .then(response => {
+        if(response.ok)
+        {
+          return response
+        }
+        throw Error("Nie udało się.")
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+  }
 
   return(
     <div className='main'>
-      <Form name={cityName} change={setCityName}/>
+      <Form 
+        name={value} 
+        change={setValue}
+        submit={handleClick}
+      />
       <Result/>
     </div>
   )
