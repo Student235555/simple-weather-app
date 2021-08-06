@@ -15,12 +15,15 @@ const App = () => {
   const [temp, setTemp] = useState('');
   const [wind, setWind] = useState('');
   const [pressure, setPressure] = useState('');
-  const [err, setErr] = useState('');
+  const [err, setErr] = useState(false);
 
   const handleClick = (e) => {
+    
     e.preventDefault();
     const API = `http://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${APIkey}&units=metric`;
 
+
+    
     fetch(API)
       .then(response => {
         if(response.ok)
@@ -30,8 +33,13 @@ const App = () => {
         throw Error("Nie udało się.")
       })
       .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
+      .then(data => {
+        setErr(false);
+      })
+      .catch(err => { 
+        console.log(err);
+        setErr(true);
+      })
   }
 
   return(
@@ -41,7 +49,7 @@ const App = () => {
         change={setValue}
         submit={handleClick}
       />
-      <Result/>
+      <Result error = {err}/>
     </div>
   )
 }

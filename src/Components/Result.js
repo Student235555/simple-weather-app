@@ -1,10 +1,10 @@
 import React from "react";
 import './Result.css';
 
-const Result = () => {
+const Result = ({error}) => {
     return ( 
         <>
-            <p>Miasto, pogoda</p>
+            <p>{String(error)}</p>
         </>
      );
 }
