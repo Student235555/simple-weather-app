@@ -17,13 +17,13 @@ const App = () => {
   const [pressure, setPressure] = useState('');
   const [err, setErr] = useState(false);
 
+  const weather = [err, date, city, sunrise, sunset, temp, pressure, wind];
+
   const handleClick = (e) => {
     
     e.preventDefault();
     const API = `http://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${APIkey}&units=metric`;
 
-
-    
     fetch(API)
       .then(response => {
         if(response.ok)
@@ -34,11 +34,20 @@ const App = () => {
       })
       .then(response => response.json())
       .then(data => {
+        const time = new Date().toLocaleString();
         setErr(false);
+        setDate(time);
+        setSunrise(data.sys.sunrise);
+        setSunset(data.sys.sunset);
+        setTemp(data.main.temp)
+        setWind(data.wind.speed);
+        setPressure(data.main.pressure);
+        setCity(value);
       })
       .catch(err => { 
         console.log(err);
         setErr(true);
+        setCity(value);
       })
   }
 
@@ -49,7 +58,7 @@ const App = () => {
         change={setValue}
         submit={handleClick}
       />
-      <Result error = {err}/>
+      <Result weather = {weather}/>
     </div>
   )
 }
