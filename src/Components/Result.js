@@ -25,7 +25,7 @@ const Result = ({weather}) => {
 
     return ( 
       <div className='result'>
-          {weather[7] ? `Nie ma w bazie miasta ${weather[0]}`: content}
+          {weather[7] ? <h3>Nie ma w bazie miasta: <em>{weather[0]}</em>`</h3>: content}
       </div>
      );
 }
