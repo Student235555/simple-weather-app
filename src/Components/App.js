@@ -17,7 +17,7 @@ const App = () => {
   const [pressure, setPressure] = useState('');
   const [err, setErr] = useState(false);
 
-  const weather = [err, date, city, sunrise, sunset, temp, pressure, wind];
+  const weather = [city, date, temp, sunrise, sunset, pressure, wind, err];
 
   const handleClick = (e) => {
     
