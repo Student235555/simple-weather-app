@@ -52,7 +52,7 @@ const App = () => {
   }
 
   return(
-    <div className='main'>
+    <div className='App'>
       <Form 
         name={value} 
         change={setValue}
