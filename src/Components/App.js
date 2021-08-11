@@ -22,7 +22,7 @@ const App = () => {
   const handleClick = (e) => {
     
     e.preventDefault();
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${APIkey}&units=metric`;
+    const API = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${APIkey}&units=metric`;
 
     fetch(API)
       .then(response => {
