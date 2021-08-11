@@ -1,12 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-align: center;
+  font-family: 'Roboto Condensed', arial, sans-serif;
 }
 
-.main{
-  min-height: 100%;
+.App{
+  min-height: 100vh;
+  background-color: #E4B7E5;
 }
 
 .App input, .App button{
@@ -22,7 +26,11 @@
 }
 
 .App button:hover{
-  background-color: black;
+  background-color: #B288C0;
   color: white;
   border-color: black;
+}
+
+.App h4{
+  margin: 10px auto;
 }

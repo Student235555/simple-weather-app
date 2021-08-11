@@ -5,7 +5,15 @@ const Result = ({weather}) => {
 
     let content = null;
 
-    if(!weather[7] && weather[0]){
+    if(weather[0].length < 1)
+
+    return ( 
+        <div className='result'>
+            {<h3>Proszę podać nazwę miasta.</h3>}
+        </div>
+    );
+
+    else if(!weather[7] && weather[0]){
 
         const sunriseTime = new Date(weather[3]*1000).toLocaleTimeString();
         const sunsetTime = new Date(weather[4]*1000).toLocaleTimeString();
@@ -25,7 +33,7 @@ const Result = ({weather}) => {
 
     return ( 
       <div className='result'>
-          {weather[7] ? <h3>Nie ma w bazie miasta: <em>{weather[0]}</em>`</h3>: content}
+          {weather[7] ? <h3>Nie ma w bazie miasta: <em>{weather[0]}</em></h3>: content}
       </div>
      );
 }
